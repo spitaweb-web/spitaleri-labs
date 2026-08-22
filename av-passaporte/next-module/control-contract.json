@@ -1,0 +1,29 @@
+{
+  "event": "work.completed",
+  "source": "AV Control",
+  "required": {
+    "workId": "string",
+    "customerName": "string",
+    "customerEmail": "string|null",
+    "species": "string",
+    "installedAt": "YYYY-MM-DD",
+    "location": "string"
+  },
+  "generated": {
+    "passportToken": "12+ random hex chars",
+    "passportPath": "/clientes/{passportToken}",
+    "stage": "installed",
+    "nextControlAt": "installedAt + 7 days"
+  },
+  "workflow": [
+    "AV Control marca obra como terminada",
+    "se genera o activa el perfil postobra",
+    "se crea token privado",
+    "se envía enlace al cliente",
+    "48 horas: chequeo de riego",
+    "7 días: control por imágenes",
+    "primer corte: cuando haya arraigue confirmado",
+    "30 días: revisión general",
+    "cambio de estación: actualización automática"
+  ]
+}
