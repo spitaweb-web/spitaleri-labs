@@ -1,0 +1,53 @@
+{
+  "version": "0.1.0",
+  "product": "Alfombra Verde · Pasaporte del césped",
+  "species": {
+    "celebration-bermuda": {
+      "label": "Celebration Bermuda",
+      "initialStage": {
+        "title": "Arraigue inicial",
+        "guidance": [
+          "Mantener humedad pareja en la base sin encharcar.",
+          "Ajustar frecuencia según sol, viento, drenaje y cobertura real del riego.",
+          "Evitar tránsito intenso hasta observar arraigue suficiente.",
+          "No cortar hasta que exista crecimiento activo y anclaje suficiente."
+        ]
+      },
+      "established": {
+        "summer": {
+          "mowingHeightMm": {"min": 20, "max": 30},
+          "mowingRule": "No retirar más de un tercio de la hoja por corte.",
+          "watering": "Priorizar riegos profundos y ajustar frecuencia a temperatura, viento, suelo y exposición."
+        },
+        "spring": {
+          "guidance": "Aumentar gradualmente el riego a medida que se reactiva el crecimiento y revisar sectores lentos."
+        },
+        "autumnWinter": {
+          "guidance": "Reducir el riego conforme baja la demanda; el color y la actividad pueden disminuir naturalmente con el frío."
+        }
+      }
+    }
+  },
+  "postWorkSequence": [
+    {"offsetHours": 0, "type": "work_closed", "channel": "interface", "title": "Obra terminada"},
+    {"offsetHours": 48, "type": "irrigation_check", "channel": "email+interface", "title": "Chequeo de riego"},
+    {"offsetDays": 7, "type": "photo_control", "channel": "email+interface", "title": "Control por imágenes"},
+    {"trigger": "first_mow_ready", "type": "first_mow", "channel": "email+interface", "title": "Primer corte"},
+    {"offsetDays": 30, "type": "month_review", "channel": "email+interface", "title": "Revisión de 30 días"},
+    {"trigger": "season_change", "type": "seasonal_update", "channel": "email+interface", "title": "Actualización de temporada"}
+  ],
+  "commercialHooks": [
+    "fertilization",
+    "recovery",
+    "irrigation-adjustment",
+    "garden-expansion",
+    "landscaping",
+    "maintenance",
+    "review-request"
+  ],
+  "privacy": {
+    "pageIndexing": false,
+    "recommendedRoute": "/clientes/[token]",
+    "tokenType": "unguessable-random"
+  }
+}
