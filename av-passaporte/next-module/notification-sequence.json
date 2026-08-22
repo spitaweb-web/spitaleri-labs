@@ -1,0 +1,40 @@
+{
+  "version": "0.2",
+  "triggers": [
+    {
+      "id": "after_48h",
+      "offsetHours": 48,
+      "subject": "Chequeo de riego de tu césped",
+      "message": "Ya pasaron 48 horas desde la colocación. Revisá humedad pareja y cobertura de riego en tu Pasaporte de Alfombra Verde.",
+      "cta": "Abrir mi pasaporte"
+    },
+    {
+      "id": "day_7",
+      "offsetDays": 7,
+      "subject": "Control de 7 días",
+      "message": "Es momento del primer control por imágenes. Enviá fotos generales y de cualquier sector que quieras revisar.",
+      "cta": "Enviar fotos"
+    },
+    {
+      "id": "first_cut",
+      "condition": "rooting_confirmed_and_active_growth",
+      "subject": "Tu primer corte",
+      "message": "Tu césped ya puede estar cerca del primer corte. Revisá la altura y las condiciones recomendadas antes de hacerlo.",
+      "cta": "Ver recomendación"
+    },
+    {
+      "id": "day_30",
+      "offsetDays": 30,
+      "subject": "Revisión de 30 días",
+      "message": "Cumplimos el primer mes. Revisá el estado general y cualquier ajuste de riego o corte.",
+      "cta": "Ver mi césped"
+    },
+    {
+      "id": "season_change",
+      "condition": "season_changed",
+      "subject": "Cambió la temporada: ajustá el cuidado",
+      "message": "Actualizamos las pautas de riego y corte para tu césped según la nueva temporada.",
+      "cta": "Ver cuidados"
+    }
+  ]
+}
