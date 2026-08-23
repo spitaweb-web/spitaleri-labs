@@ -13,11 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
-      - name: Verify candidate public Vercel project
+      - name: Verify candidate custom domain
         shell: bash
         run: |
           set -euo pipefail
-          URL="https://alfombra-verde-clientes-public2-agustin-spitaleris-projects.vercel.app"
+          URL="https://pasaporte.alfombraverde.com.ar"
           BODY="$(curl -fsSL --max-time 20 "$URL")"
-          printf '%s' "$BODY" | grep -q "AV PUBLIC2 TEST"
+          printf '%s' "$BODY" | grep -q "AV DOMAIN TEST"
           echo "VERIFIED $URL"
