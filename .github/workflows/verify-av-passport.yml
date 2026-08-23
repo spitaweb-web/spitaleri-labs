@@ -17,7 +17,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          URL="https://alfombra-verde-clientes-public-agustin-spitaleris-projects.vercel.app"
+          URL="https://alfombra-verde-clientes-public2-agustin-spitaleris-projects.vercel.app"
           BODY="$(curl -fsSL --max-time 20 "$URL")"
-          printf '%s' "$BODY" | grep -q "AV PUBLIC TEST"
+          printf '%s' "$BODY" | grep -q "AV PUBLIC2 TEST"
           echo "VERIFIED $URL"
