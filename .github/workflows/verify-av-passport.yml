@@ -1,0 +1,36 @@
+name: Verify AV Passport
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "clientes/**"
+      - "vercel.json"
+      - "robots.txt"
+      - ".github/workflows/verify-av-passport.yml"
+      - ".av-deploy-ping"
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Verify Cristian passport is publicly reachable
+        shell: bash
+        run: |
+          set -u
+          URL="https://alfombra-verde-clientes-agustin-spitaleris-projects.vercel.app/clientes/c8f2a1b7e490"
+          for i in $(seq 1 24); do
+            BODY="$(curl -fsSL --max-time 15 "$URL" 2>/dev/null || true)"
+            if printf '%s' "$BODY" | grep -q "Hola Cristian" && printf '%s' "$BODY" | grep -q "Celebration Bermuda"; then
+              echo "VERIFIED $URL"
+              exit 0
+            fi
+            echo "Attempt $i: not ready yet"
+            sleep 5
+          done
+          echo "Route did not become ready: $URL" >&2
+          curl -sSIL --max-time 20 "$URL" || true
+          exit 1
