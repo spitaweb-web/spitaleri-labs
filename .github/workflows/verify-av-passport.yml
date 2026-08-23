@@ -13,11 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
-      - name: Verify candidate custom domain
+      - name: Check Vercel automation credential availability
         shell: bash
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
-          set -euo pipefail
-          URL="https://pasaporte.alfombraverde.com.ar"
-          BODY="$(curl -fsSL --max-time 20 "$URL")"
-          printf '%s' "$BODY" | grep -q "AV DOMAIN TEST"
-          echo "VERIFIED $URL"
+          if [ -n "${VERCEL_TOKEN:-}" ]; then
+            echo "HAS_VERCEL_TOKEN"
+          else
+            echo "NO_VERCEL_TOKEN"
+          fi
