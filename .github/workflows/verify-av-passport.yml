@@ -10,6 +10,15 @@ on:
       - "robots.txt"
       - ".github/workflows/verify-av-passport.yml"
       - ".av-deploy-ping"
+  pull_request:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "clientes/**"
+      - "vercel.json"
+      - "robots.txt"
+      - ".github/workflows/verify-av-passport.yml"
+      - ".av-deploy-ping"
   workflow_dispatch:
 
 jobs:
